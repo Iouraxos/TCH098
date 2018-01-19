@@ -21,63 +21,6 @@ Includes
 #include "utils.h"
 
 
-/******************************************************************************
-Global functions definition
-******************************************************************************/
-
-/* bit operation */
-
-uint8_t set_bit(uint8_t byte, uint8_t bit){
-
-    return byte | (1 << bit);
-}
-
-uint8_t clear_bit(uint8_t byte, uint8_t bit){
-
-    return byte & ~(1 << bit);
-}
-
-uint8_t toggle_bit(uint8_t byte, uint8_t bit){
-
-    return byte ^ (1 << bit);
-}
-
-uint8_t write_bit(uint8_t byte, uint8_t bit, uint8_t value){
-
-    return (byte & ~(1 << bit)) | (value << bit);
-}
-
-uint8_t read_bit(uint8_t byte, uint8_t bit){
-
-    return (byte >> bit) & 1;
-}
-
-uint8_t set_bits(uint8_t byte, uint8_t mask){
-
-    return byte | mask;
-}
-
-uint8_t clear_bits(uint8_t byte, uint8_t mask){
-
-    return byte & ~(mask);
-}
-
-uint8_t toggle_bits(uint8_t byte, uint8_t mask){
-
-    return byte ^ mask;
-}
-
-uint8_t write_bits(uint8_t byte, uint8_t mask, uint8_t value){
-
-    return (byte & ~(mask)) | (value & mask);
-}
-
-uint8_t read_bits(uint8_t byte, uint8_t mask){
-
-    return byte & mask;
-}
-
-
 /** Memory management **********************************************************/
 void mem_copy(void * destination, const void * source, uint8_t num ){
 
