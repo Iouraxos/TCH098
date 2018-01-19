@@ -1,7 +1,7 @@
 // Programme d'initiation :
-// Programme qui allume les DELs lorsque le bouton du « joystick » est appuyé et
-// affiche le message « DEL en fonction » sur l’écran LCD et éteint les DELs lorsque
-// le bouton du « joystick » est relâché et affiche le message « DEL hors fonction ».
+// Programme qui allume les DELs lorsque le bouton du Â« joystick Â» est appuyÃ© et
+// affiche le message Â« DEL en fonction Â» sur lâ€™Ã©cran LCD et Ã©teint les DELs lorsque
+// le bouton du Â« joystick Â» est relÃ¢chÃ© et affiche le message Â« DEL hors fonction Â».
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -12,12 +12,12 @@
 
 int main(void){
 
-	bool button_state; // Variable qui contiendra l'état du bouton
+	bool button_state; // Variable qui contiendra l'Ã©tat du bouton
 
-	DDRX = clear_bit(DDRX, XXX); // Mettre la broche du bouton du joystick en entrée
+	DDRX = clear_bit(DDRX, XXX); // Mettre la broche du bouton du joystick en entrÃ©e
 
 	PORTX = set_bit(PORTX, XXX); // On doit activer la "pull-up" interne de la broche pour
-				        // forcer un état haut quand le bouton n'est pas enfoncé
+				        // forcer un Ã©tat haut quand le bouton n'est pas enfoncÃ©
 	DDRX = set_bits(DDRX, 0b00011111); // Mettre les cinq premiers bits du port des DELs en
 						 // en sortie
 
@@ -26,25 +26,25 @@ int main(void){
 	// Dans une boucle infinie
 	while(1){
 
-		lcd_clear_display(); // On efface l'écran LCD
+		lcd_clear_display(); // On efface l'Ã©cran LCD
 
-		button_state = read_bit(PINX, XXX); // On récupère l'état du bouton
+		button_state = read_bit(PINX, XXX); // On rÃ©cupÃ¨re l'Ã©tat du bouton
 
-		// Si le bouton est enfoncé (il ne faut pas oublier qu'en appuyant
-		// sur le bouton, on connecte la broche du microcontrôleur à la masse,
-		// donc on génère un 0 (ou FALSE))
+		// Si le bouton est enfoncÃ© (il ne faut pas oublier qu'en appuyant
+		// sur le bouton, on connecte la broche du microcontrÃ´leur Ã  la masse,
+		// donc on gÃ©nÃ¨re un 0 (ou FALSE))
 		if(button_state == FALSE){
 
-			PORTB = set_bits(PORTX, 0b00011111); // On met en fonction les DELs
-			lcd_write_string("DELs en fonction"); // On écrit sur le LCD
+			PORTX = set_bits(PORTX, 0b00011111); // On met en fonction les DELs
+			lcd_write_string("DELs en fonction"); // On Ã©crit sur le LCD
 		}
 
-		// Si le bouton n'est pas enfoncé
+		// Si le bouton n'est pas enfoncÃ©
 		else{
-			PORTB = clear_bits(PORTX, 0b00011111); // On met hors fonction les DELs
-			lcd_write_string("DELs hors       fonction"); // On écrit sur le LCD
+			PORTX = clear_bits(PORTX, 0b00011111); // On met hors fonction les DELs
+			lcd_write_string("DELs hors       fonction"); // On Ã©crit sur le LCD
 		}
 
-		_delay_ms(100); // On attend un petit délai sinon la boucle irait trop vite
+		_delay_ms(100); // On attend un petit dÃ©lai sinon la boucle irait trop vite
 	}
 }
