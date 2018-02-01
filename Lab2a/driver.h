@@ -120,7 +120,7 @@ void servo_init(void);
 
 /**
     \brief Applique la bonne impulsion à la sortie du servomoteur A pour lui donner un angle particulier
-	\param[in]	angle Une valeur entre -128 et 127
+	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
 
 	La valeur de l'angle qui est passée en paramètre n'a aucune relation avec une grandeur physique
@@ -128,11 +128,11 @@ void servo_init(void);
 	c'est que le plus petit angle soit obtenu avec -128, le plus grand avec 127 et avec 0 le servomoteur
 	devrait être droit.
 */
-void servo_set_a(int8_t angle);
+void servo_set_a(uint8_t angle);
 
 /**
     \brief Applique la bonne impulsion à la sortie du servomoteur B pour lui donner un angle particulier
-	\param[in]	angle Une valeur entre -128 et 127
+	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
 
 	La valeur de l'angle qui est passé en paramètre n'a aucune relation avec une grandeur physique
@@ -140,7 +140,7 @@ void servo_set_a(int8_t angle);
 	c'est que le plus petit angle soit obtenu avec -128, le plus grand avec 127 et avec 0 le servomoteur
 	devrait être droit.
 */
-void servo_set_b(int8_t angle);
+void servo_set_b(uint8_t angle);
 
 /**
     \brief Initialise les modules de PWM
