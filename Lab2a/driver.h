@@ -125,7 +125,7 @@ void servo_init(void);
 
 	La valeur de l'angle qui est passée en paramètre n'a aucune relation avec une grandeur physique
 	définie (degré, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule règle qui est attendue
-	c'est que le plus petit angle soit obtenu avec -128, le plus grand avec 127 et avec 0 le servomoteur
+	c'est que le plus petit angle soit obtenu avec 0, le plus grand avec 255 et avec 127 le servomoteur
 	devrait être droit.
 */
 void servo_set_a(uint8_t angle);
@@ -137,7 +137,7 @@ void servo_set_a(uint8_t angle);
 
 	La valeur de l'angle qui est passé en paramètre n'a aucune relation avec une grandeur physique
 	définie (degré, radian, h:m:s...). Il s'agit d'une valeur abstraite. La seule règle qui est attendue
-	c'est que le plus petit angle soit obtenu avec -128, le plus grand avec 127 et avec 0 le servomoteur
+	c'est que le plus petit angle soit obtenu avec 0, le plus grand avec 255 et avec 127 le servomoteur
 	devrait être droit.
 */
 void servo_set_b(uint8_t angle);
