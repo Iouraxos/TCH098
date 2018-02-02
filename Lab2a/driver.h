@@ -67,7 +67,7 @@ void adc_init(void);
 
 /**
     \brief Fait une conversion de la valeur analogique présente sur une entrée
-    \param[in]	channel	Le channel sur lequel la conversion doit être effectuée (entre PA0 et PA4 inclusivement)
+    \param[in]	channel	Le channel (entrée) sur lequel la conversion doit être effectuée (entre PA0 et PA4 inclusivement)
     \return La valeur convertie.
 	C'est une erreur d'appeler cette fonction avec un channel négatif ou plus grand que 4
 	Il est important de noter que cette fonction ne s'exécute pas instantanément. La conversion
