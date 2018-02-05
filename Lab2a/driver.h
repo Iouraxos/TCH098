@@ -2,7 +2,7 @@
 #define DRIVER_H_INCLUDED
 
 /**
-	\file  driver.c
+	\file
 	\brief Code source de fonctions qui pilotent directement du matériel
 	
 	\author *********************************************************
