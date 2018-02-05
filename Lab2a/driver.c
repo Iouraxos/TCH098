@@ -75,13 +75,21 @@ void servo_init(void){
 
 void servo_set_a(uint8_t angle){
 	
-	// Modification du rapport cyclique du PWM du servomoteur. Min = 600, Max = 2550
+	// Mise à l'échelle de la valeur du joystick (entre 0 à 255) 
+	// pour obtenir une valeur de comparaison entre 600 et 2400
+	
+	
+	// Modification du rapport cyclique du PWM du servomoteur (Timer 1, PD5 - OC1A)
 	
 }
 
 void servo_set_b(uint8_t angle){
 	
-	// Modification du rapport cyclique du PWM du servomoteur. Min = 600, Max = 2550
+	// Mise à l'échelle de la valeur du joystick (entre 0 à 255) 
+	// pour obtenir une valeur de comparaison entre 600 et 2400
+	
+	
+	// Modification du rapport cyclique du PWM du servomoteur (Timer 1, PD4 - OC1B)
 
 }
 
@@ -99,18 +107,20 @@ void pwm_init(bool init_a, bool init_b){
 
 void pwm_set_a(uint8_t duty){
 	
+	// Timer 0, PB3 - OC0
+	
 	// Pour avoir un duty de 0, il faut éteindre le PWM et directement piloter la sortie à 0
 	if(duty == 0){
 		
-		//Mettre 0 dans la broche PD7 (OC2) du port
-		PORTD = clear_bit(PORTD, PD7);
+		//Mettre 0 dans la broche PB3 (OC0) du port B
+		PORTB = clear_bit(PORTB, PB3);
 		
 		//Désactive le comparateur
 		TCCR0 = clear_bit(TCCR0, COM01);
 	}
 	
 	else{
-		// Modification du rapport cyclique du PWM
+		// Modification du rapport cyclique du PWM du moteur (Timer 0, PB3 - OC0)
 		
 		
 		//Active le comparateur
@@ -121,18 +131,20 @@ void pwm_set_a(uint8_t duty){
 
 void pwm_set_b(uint8_t duty){
 
+	// Timer 2, PD7 - OC2
+	
 	// Pour avoir un duty de 0, il faut éteindre le PWM et directement piloter la sortie à 0
 	if(duty == 0){
 		
-		//Mettre 0 dans la broche PB3 (OC0) du port
-		PORTB = clear_bit(PORTB, PB3);
+		//Mettre 0 dans la broche PD7 (OC2) du port D
+		PORTD = clear_bit(PORTD, PD7);
 		
 		//Désactive le comparateur
 		TCCR2 = clear_bit(TCCR2, COM21);
 	}
 	
 	else{
-		// Modification du rapport cyclique du PWM
+		// Modification du rapport cyclique du PWM du moteur (Timer 2, PD7 - OC2)
 		
 		
 		//Active le comparateur
@@ -146,5 +158,5 @@ void joystick_button_init(void){
 
 
 bool joystick_button_read(void){
-
+	return 0;
 }
