@@ -67,7 +67,7 @@ void adc_init(void);
 
 /**
     \brief Fait une conversion de la valeur analogique présente sur une entrée
-    \param[in]	channel	Le channel (entrée) sur lequel la conversion doit être effectuée (entre PA0 et PA4 inclusivement)
+    \param[in]	channel	Le channel (entrée) sur lequel la conversion doit être effectuée (entre PA0 à PA4 inclusivement)
     \return La valeur convertie.
 	C'est une erreur d'appeler cette fonction avec un channel négatif ou plus grand que 4
 	Il est important de noter que cette fonction ne s'exécute pas instantanément. La conversion
@@ -82,8 +82,8 @@ uint8_t adc_read(uint8_t channel);
     \brief Initialise le module de contrôle des servomoteurs
     \return rien.
 	Le module de contrôle des servomoteurs utilise le timer 1.
-	Servo A correspond à la broche PD5 du microcontrôleur ce qui correspond à la broche 19 du DIP.
-	Servo B correspond à la broche PD4 du microcontrôleur ce qui correspond à la broche 18 du DIP.
+	Servo A correspond à la broche PD5 du microcontrôleur ce qui correspond à la broche 19 (PD5 - OC1A) du DIP.
+	Servo B correspond à la broche PD4 du microcontrôleur ce qui correspond à la broche 18 (PD4 - OC1B) du DIP.
 	
 			  	  +---- ----+
 			    --| 1  U 40 |--
@@ -111,7 +111,7 @@ uint8_t adc_read(uint8_t channel);
 void servo_init(void);
 
 /**
-    \brief Applique la bonne impulsion à la sortie du servomoteur A pour lui donner un angle particulier
+    \brief Applique la bonne impulsion à la sortie du servomoteur A (broche 19 du DIP, PD5 - OC1A) pour lui donner un angle particulier
 	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
 	La valeur de l'angle qui est passée en paramètre n'a aucune relation avec une grandeur physique
@@ -122,7 +122,7 @@ void servo_init(void);
 void servo_set_a(uint8_t angle);
 
 /**
-    \brief Applique la bonne impulsion à la sortie du servomoteur B pour lui donner un angle particulier
+    \brief Applique la bonne impulsion à la sortie du servomoteur B (broche 18 du DIP, PD4 - OC1B) pour lui donner un angle particulier
 	\param[in]	angle Une valeur entre 0 et 255
     \return rien.
 	La valeur de l'angle qui est passé en paramètre n'a aucune relation avec une grandeur physique
@@ -137,9 +137,10 @@ void servo_set_b(uint8_t angle);
     \param init_a Si == TRUE, le PWM A est initialisé
     \param init_b Si == TRUE, le PWM B est initialisé
     \return rien.
-	Le PWM A correspond au timer 0. Le timer 0 utilise la broche PB3 du microcontrôleur
-	ce qui correspond à la broche 4 du DIP. Le PWM B correspond au timer 2. Le timer 2
-	utilise la broche PD7 du microcontrôleur ce qui correspond à la broche 21 du DIP.
+	Le PWM A correspond au timer 0. Le timer 0 utilise la broche PB3 (OC0) du 
+	microcontrôleur ce qui correspond à la broche 4 du DIP. 
+	Le PWM B correspond au timer 2. Le timer 2 utilise la broche PD7 (OC2) du 
+	microcontrôleur ce qui correspond à la broche 21 du DIP.
 	
 			    +---- ----+
 			  --| 1  U 40 |--
@@ -167,7 +168,7 @@ void servo_set_b(uint8_t angle);
 void pwm_init(bool init_a, bool init_b);
 
 /**
-    \brief Applique un PWM à la sortie PWM A (broche 4 du DIP)
+    \brief Applique un PWM à la sortie PWM A (broche 4 du DIP, PB3 - OC0)
 	\param[in]	duty Une valeur entre 0 et 255
     \return rien.
 	Un duty (rapport cyclique) de 0 correspond à un PWM de 0% et un duty de 255 correspond à un
@@ -176,7 +177,7 @@ void pwm_init(bool init_a, bool init_b);
 void pwm_set_a(uint8_t duty);
 
 /**
-    \brief Applique un PWM à la sortie PWM B (broche 21 du DIP)
+    \brief Applique un PWM à la sortie PWM B (broche 21 du DIP, PD7 - OC2)
 	\param[in]	duty Une valeur entre 0 et 255
     \return rien.
 	Un duty (rapport cyclique) de 0 correspond à un PWM de 0% et un duty de 255 correspond à un
