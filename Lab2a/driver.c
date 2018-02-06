@@ -24,7 +24,7 @@ Définitions de fonctions
 
 void adc_init(void){
 	
-	// Configuration des broches utilisées du port A en entrée (Entre PA0 et PA7)	
+	// Configuration des broches utilisées du port A en entrée (Entre PA0 et PA4)	
 	
 
 	// Sélectionner la référence de tension: la tension d'alimentation (AVCC)
